@@ -10,7 +10,7 @@ npx keystone dev
 
 ## Details & warnings
 
-The names are not intuitive and slightly messy. I have not cleaned things up yet.
+The names for tables aren't really intuitive and are slightly messy. I am still working on cleaning things up!
 
 -   `LogEntry`: an entry into the activity log
 -   `LogType` (really should be LogGroupType): such as Project, Book, etc.
