@@ -36,6 +36,9 @@ var keystone_default = (0, import_core.config)({
     enableLogging: true,
     idField: { kind: "uuid" }
   },
+  server: {
+    cors: { origin: ["http://localhost:4321"] }
+  },
   lists: {
     LogEntry: (0, import_core.list)({
       access: import_access.allowAll,
@@ -99,7 +102,7 @@ var keystone_default = (0, import_core.config)({
         }),
         category: (0, import_fields.relationship)({
           ref: "LogCategory",
-          many: false
+          many: true
         }),
         startDate: (0, import_fields.calendarDay)({}),
         endDate: (0, import_fields.calendarDay)({}),

@@ -36,6 +36,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/log-entries/create.js"
+    ],
+    "/log-groups": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/log-groups.js"
+    ],
+    "/log-groups/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/log-groups/[id].js"
+    ],
+    "/log-groups/create": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/log-groups/create.js"
     ]
   },
   "ampFirstPages": []

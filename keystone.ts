@@ -21,6 +21,9 @@ export default config<BaseKeystoneTypeInfo>({
 		enableLogging: true,
 		idField: { kind: "uuid" },
 	},
+	server: {
+		cors: { origin: ["http://localhost:4321"] },
+	},
 	lists: {
 		LogEntry: list({
 			access: allowAll,
@@ -84,7 +87,7 @@ export default config<BaseKeystoneTypeInfo>({
 				}),
 				category: relationship({
 					ref: "LogCategory",
-					many: false,
+					many: true,
 				}),
 				startDate: calendarDay({}),
 				endDate: calendarDay({}),

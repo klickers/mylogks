@@ -36,18 +36,16 @@ model LogCategory {
 }
 
 model LogGroup {
-  id                  String       @id @default(uuid())
-  name                String       @unique @default("")
-  slug                String       @unique @default("")
-  type                LogType?     @relation("LogGroup_type", fields: [typeId], references: [id])
-  typeId              String?      @map("type")
-  category            LogCategory? @relation("LogGroup_category", fields: [categoryId], references: [id])
-  categoryId          String?      @map("category")
-  startDate           DateTime?    @mysql.Date
-  endDate             DateTime?    @mysql.Date
-  completed           Boolean      @default(false)
-  from_LogEntry_group LogEntry[]   @relation("LogEntry_group")
+  id                  String        @id @default(uuid())
+  name                String        @unique @default("")
+  slug                String        @unique @default("")
+  type                LogType?      @relation("LogGroup_type", fields: [typeId], references: [id])
+  typeId              String?       @map("type")
+  category            LogCategory[] @relation("LogGroup_category")
+  startDate           DateTime?     @mysql.Date
+  endDate             DateTime?     @mysql.Date
+  completed           Boolean       @default(false)
+  from_LogEntry_group LogEntry[]    @relation("LogEntry_group")
 
   @@index([typeId])
-  @@index([categoryId])
 }

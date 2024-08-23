@@ -205,7 +205,8 @@ type LogGroup {
   name: String
   slug: String
   type: LogType
-  category: LogCategory
+  category(where: LogCategoryWhereInput! = {}, orderBy: [LogCategoryOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: LogCategoryWhereUniqueInput): [LogCategory!]
+  categoryCount(where: LogCategoryWhereInput! = {}): Int
   startDate: CalendarDay
   endDate: CalendarDay
   completed: Boolean
@@ -227,10 +228,16 @@ input LogGroupWhereInput {
   name: StringFilter
   slug: StringFilter
   type: LogTypeWhereInput
-  category: LogCategoryWhereInput
+  category: LogCategoryManyRelationFilter
   startDate: CalendarDayNullableFilter
   endDate: CalendarDayNullableFilter
   completed: BooleanFilter
+}
+
+input LogCategoryManyRelationFilter {
+  every: LogCategoryWhereInput
+  some: LogCategoryWhereInput
+  none: LogCategoryWhereInput
 }
 
 input CalendarDayNullableFilter {
@@ -262,7 +269,7 @@ input LogGroupUpdateInput {
   name: String
   slug: String
   type: LogTypeRelateToOneForUpdateInput
-  category: LogCategoryRelateToOneForUpdateInput
+  category: LogCategoryRelateToManyForUpdateInput
   startDate: CalendarDay
   endDate: CalendarDay
   completed: Boolean
@@ -274,10 +281,11 @@ input LogTypeRelateToOneForUpdateInput {
   disconnect: Boolean
 }
 
-input LogCategoryRelateToOneForUpdateInput {
-  create: LogCategoryCreateInput
-  connect: LogCategoryWhereUniqueInput
-  disconnect: Boolean
+input LogCategoryRelateToManyForUpdateInput {
+  disconnect: [LogCategoryWhereUniqueInput!]
+  set: [LogCategoryWhereUniqueInput!]
+  create: [LogCategoryCreateInput!]
+  connect: [LogCategoryWhereUniqueInput!]
 }
 
 input LogGroupUpdateArgs {
@@ -289,7 +297,7 @@ input LogGroupCreateInput {
   name: String
   slug: String
   type: LogTypeRelateToOneForCreateInput
-  category: LogCategoryRelateToOneForCreateInput
+  category: LogCategoryRelateToManyForCreateInput
   startDate: CalendarDay
   endDate: CalendarDay
   completed: Boolean
@@ -300,9 +308,9 @@ input LogTypeRelateToOneForCreateInput {
   connect: LogTypeWhereUniqueInput
 }
 
-input LogCategoryRelateToOneForCreateInput {
-  create: LogCategoryCreateInput
-  connect: LogCategoryWhereUniqueInput
+input LogCategoryRelateToManyForCreateInput {
+  create: [LogCategoryCreateInput!]
+  connect: [LogCategoryWhereUniqueInput!]
 }
 
 """
