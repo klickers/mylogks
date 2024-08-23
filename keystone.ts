@@ -13,16 +13,12 @@ import { document } from "@keystone-6/fields-document"
 export default config<BaseKeystoneTypeInfo>({
 	db: {
 		provider: "mysql",
-		url: "mysql://root:@localhost:3306/mylogks",
-		onConnect: async (context) => {
-			/* ... */
-		},
-		// Optional advanced configuration
+		url: "mysql://root:@localhost:3306/mylogks", // edit this line
 		enableLogging: true,
 		idField: { kind: "uuid" },
 	},
 	server: {
-		cors: { origin: ["http://localhost:4321"] },
+		cors: { origin: ["http://localhost:4321"] }, // you might also need to edit this line
 	},
 	lists: {
 		LogEntry: list({

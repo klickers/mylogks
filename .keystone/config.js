@@ -30,14 +30,13 @@ var keystone_default = (0, import_core.config)({
   db: {
     provider: "mysql",
     url: "mysql://root:@localhost:3306/mylogks",
-    onConnect: async (context) => {
-    },
-    // Optional advanced configuration
+    // edit this line
     enableLogging: true,
     idField: { kind: "uuid" }
   },
   server: {
     cors: { origin: ["http://localhost:4321"] }
+    // you might also need to edit this line
   },
   lists: {
     LogEntry: (0, import_core.list)({
